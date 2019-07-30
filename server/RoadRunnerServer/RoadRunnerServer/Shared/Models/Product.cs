@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+using RoadRunnerServer.Models;
 
-namespace RoadRunnerServer.Models
+namespace RoadRunnerServer.Shared.Models
 {
     public class Product
     {

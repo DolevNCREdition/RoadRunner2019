@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using RoadRunnerServer.Models;
-using RoadRunnerServer.Services;
+﻿using Microsoft.AspNetCore.Mvc;
+using RoadRunnerServer.Shared.Models;
+using RoadRunnerServer.Services.Interfaces;
 
 namespace RoadRunnerServer.Controller
 {
@@ -13,7 +8,7 @@ namespace RoadRunnerServer.Controller
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private IProductService _productService;
+        private readonly IProductService _productService;
 
         public ProductController(IProductService productService)
         {

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using RoadRunnerServer.Services;
+using RoadRunnerServer.Services.Interfaces;
+using RoadRunnerServer.Shared.Interfaces;
 
 namespace RoadRunnerServer
 {
@@ -19,7 +21,6 @@ namespace RoadRunnerServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IProductService, ProductService>();
             services.AddCors(options =>
             {
                 options.AddPolicy(CorsPolicy, builder =>
@@ -27,6 +28,12 @@ namespace RoadRunnerServer
                     builder.WithOrigins("http://localhost:4200");
                 });
             });
+			
+            services.AddLogging();
+            services.AddMemoryCache();
+
+            services.AddSingleton<IProductDataBase, ProductDataBase>();
+            services.AddSingleton<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

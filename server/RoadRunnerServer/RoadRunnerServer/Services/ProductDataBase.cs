@@ -1,4 +1,5 @@
-﻿using RoadRunnerServer.Models;
+﻿using Microsoft.Extensions.Caching.Memory;
+using RoadRunnerServer.Models;
 using RoadRunnerServer.Shared.Interfaces;
 using Product = RoadRunnerServer.Shared.Models.Product;
 
@@ -6,7 +7,7 @@ namespace RoadRunnerServer.Services
 {
     public class ProductDataBase : DataBase<Product>, IProductDataBase
     {
-        public ProductDataBase() 
+        public ProductDataBase(IMemoryCache cache) : base(cache)
         {
             Init();
         }

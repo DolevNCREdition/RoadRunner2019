@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using RoadRunnerServer.Shared.Interfaces;
 using RoadRunnerServer.Shared.Models;
-using RoadRunnerServer.Services.Interfaces;
 
 namespace RoadRunnerServer.Controller
 {
@@ -16,9 +17,18 @@ namespace RoadRunnerServer.Controller
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Product> Get(int id)
+        //https://localhost:44380/api/Product/3
+        public ActionResult<Product> GetProduct(int id)
         {
+
             return _productService.GetProduct(id);
+        }
+
+        [HttpGet]
+        //https://localhost:44380/api/Product/
+        public ActionResult<IList<Product>> GetAllProducts()
+        {
+            return Ok( _productService.GetAllProducts());
         }
     }
 }

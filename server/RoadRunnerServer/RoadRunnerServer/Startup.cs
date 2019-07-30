@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using RoadRunnerServer.Services;
 
 namespace RoadRunnerServer
 {
@@ -18,6 +19,7 @@ namespace RoadRunnerServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddTransient<IProductService, ProductService>();
             services.AddCors(options =>
             {
                 options.AddPolicy(CorsPolicy, builder =>

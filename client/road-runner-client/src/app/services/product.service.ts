@@ -7,11 +7,14 @@ import { map } from 'rxjs/operators';
 })
 export class ProductService {
 
-  productApiUrl = 'https://localhost:44380/api/Product';
+  private _locations = null;
+
+  productApiUrl = 'https://localhost:44380/api/Product/';
 
   constructor(private http: HttpClient) { }
 
-  getProduct() {
-    return this.http.get(this.productApiUrl + '/1', {responseType:'text'});
+  getProduct(id:number) {
+    return this.http.get(this.productApiUrl + id);
   }
+
 }

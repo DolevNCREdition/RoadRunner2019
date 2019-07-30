@@ -4,17 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RoadRunnerServer.Models;
+using RoadRunnerServer.Services;
 
 namespace RoadRunnerServer.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
-    {        
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+    {
+        private IProductService _productService;
+
+        public ProductController(IProductService productService)
         {
-            return "success";
+            _productService = productService;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Product> Get(int id)
+        {
+            return _productService.GetProduct(id);
         }
     }
 }

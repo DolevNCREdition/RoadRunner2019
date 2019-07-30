@@ -13,8 +13,8 @@ export class AppComponent {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.productService.getProduct().subscribe((data: string) => {
-      this.result = data;
+    this.productService.getProduct(9).subscribe((product: any) => {
+      this.result = product.name;
     });
   }
 }

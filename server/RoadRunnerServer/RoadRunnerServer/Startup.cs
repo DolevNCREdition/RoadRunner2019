@@ -20,6 +20,7 @@ namespace RoadRunnerServer
         {
             services.AddMvc();
             services.AddTransient<IProductService, ProductService>();
+            services.AddSingleton<ILineService, LineService>();
             services.AddCors(options =>
             {
                 options.AddPolicy(CorsPolicy, builder =>

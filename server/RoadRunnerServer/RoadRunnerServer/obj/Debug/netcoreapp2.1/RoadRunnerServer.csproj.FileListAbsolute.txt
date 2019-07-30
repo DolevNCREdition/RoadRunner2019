@@ -1,0 +1,14 @@
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\bin\Debug\netcoreapp2.1\RoadRunnerServer.deps.json
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\bin\Debug\netcoreapp2.1\RoadRunnerServer.runtimeconfig.json
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\bin\Debug\netcoreapp2.1\RoadRunnerServer.runtimeconfig.dev.json
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\bin\Debug\netcoreapp2.1\RoadRunnerServer.dll
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\bin\Debug\netcoreapp2.1\RoadRunnerServer.pdb
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.csprojAssemblyReference.cache
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.csproj.CoreCompileInputs.cache
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.RazorAssemblyInfo.cache
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.RazorAssemblyInfo.cs
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.AssemblyInfoInputs.cache
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.AssemblyInfo.cs
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.RazorTargetAssemblyInfo.cache
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.dll
+C:\Hackathon2019\RoadRunnerGit\RoadRunner2019\server\RoadRunnerServer\RoadRunnerServer\obj\Debug\netcoreapp2.1\RoadRunnerServer.pdb

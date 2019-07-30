@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'road-runner-client';
+  result = 'temp';
+
+  constructor(private productService: ProductService) { }
+
+  ngOnInit() {
+    this.productService.getProduct().subscribe((data: string) => {
+      this.result = data;
+    });
+  }
 }

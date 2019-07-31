@@ -10,6 +10,6 @@ namespace RoadRunnerServer.Shared
         public int ItemId { get; set; }
         public LineTypeEnum ItemType { get; set; }
 
-        public Dictionary<LineTypeEnum, object> Bag { get; } = new Dictionary<LineTypeEnum, object>();
+        public List<object> Bag { get; } = new List<object>();
     }
 }

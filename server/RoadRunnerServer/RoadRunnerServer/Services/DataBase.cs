@@ -59,7 +59,15 @@ namespace RoadRunnerServer.Services
 
         public int Append(T value)
         {
-            var autoKey = GetAll().Max(o => o.Id) + 1;
+            var autoKey = 1;
+            var allItems = GetAll();
+            if (allItems.Any())
+            {
+                autoKey = GetAll().Max(o => o.Id) + 1;
+            }
+
+            value.Id = autoKey;
+            
             Write(autoKey, value);
 
             return autoKey;

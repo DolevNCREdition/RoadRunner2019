@@ -7,5 +7,6 @@ namespace RoadRunnerServer.Shared
 {
     public class ItemLine : Product
     {
+        public int ProductId { get; set; }
     }
 }

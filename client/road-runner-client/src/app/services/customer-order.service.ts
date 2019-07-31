@@ -11,6 +11,10 @@ export class CustomerOrderService {
   constructor(private http: HttpClient) { }
 
   getLineItems() {
-    return this.http.get(this.lineItemApiUrl);
+    return this.http.get(this.lineItemApiUrl + "GetAll");
+  }
+
+  checkForUpdate() { 
+    return this.http.get(this.lineItemApiUrl + "GetLastUpdateTime", { responseType: 'text' });
   }
 }

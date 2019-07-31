@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CustomerOrderService } from 'src/app/services/customer-order.service';
 
 @Component({
   selector: 'app-order-line',
@@ -7,11 +8,33 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class OrderLineComponent implements OnInit {
 
-  @Input() lineItems;
+  lineItems;
 
-  constructor() { }
+  private lastUpdateTime = -1;
+
+  constructor(private customerOrderService: CustomerOrderService) { }
 
   ngOnInit() {
+    this.loadLineItems();
+    this.initLineItemInterval();
+  }
+
+  loadLineItems() {
+    this.customerOrderService.getLineItems().subscribe((lineItems) => {
+      this.lineItems = lineItems;
+    });
+  }
+
+  initLineItemInterval() {
+    setInterval(() => {
+      this.customerOrderService.checkForUpdate().subscribe((lastUpdate) => {
+        const lastUpdateTicks = Number(lastUpdate);
+        if (lastUpdateTicks > this.lastUpdateTime) {
+          this.loadLineItems();
+          this.lastUpdateTime = lastUpdateTicks;
+        }
+      });
+    }, 1000);
   }
 
 }

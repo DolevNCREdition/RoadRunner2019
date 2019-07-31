@@ -7,5 +7,6 @@ namespace RoadRunnerServer.Shared
     public interface ISellingPipeline
     {
         ITargetBlock<PipelineItem> ProcessLine { get; }
+        DateTime LastUpdated { get; }
     }
 }

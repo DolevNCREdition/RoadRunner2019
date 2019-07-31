@@ -9,26 +9,19 @@ import { CustomerOrderService } from 'src/app/services/customer-order.service';
 })
 export class ScannerComponent implements OnInit {
 
-  code: string = '';
-  lineItems: any;
+  code: string = '';  
 
-  constructor(private scannerService: ScannerService, private customerOrderService: CustomerOrderService) { }
+  constructor(private scannerService: ScannerService) { }
 
   ngOnInit() {
-    this.loadLineItems();
-  }
-
-  loadLineItems() {
-    this.customerOrderService.getLineItems().subscribe((lineItems) => {
-      this.lineItems = lineItems;
-    });
-  }
+    
+  }  
 
   scanProduct() {
     this.scannerService.scanProduct(this.code).subscribe((result: string) => {
-      if (result === "true") {
-        this.loadLineItems();
-      }
+      //if (result === "true") {
+      //  this.loadLineItems();
+      //}
     });
   }
 

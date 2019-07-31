@@ -16,9 +16,17 @@ namespace RoadRunnerServer.Controller
         }
 
         [HttpGet]
+        [Route("GetAll")]
         public IEnumerable<Product> GetLineItems()
         {
             return _lineService.GetCustomerOrder();
+        }
+
+        [HttpGet]   
+        [Route("GetLastUpdateTime")]
+        public long GetLastUpdateTime()
+        {
+            return _lineService.GetLastUpdateTime();
         }
     }
 }

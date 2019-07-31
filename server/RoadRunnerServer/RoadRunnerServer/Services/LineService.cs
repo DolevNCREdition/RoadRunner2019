@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
@@ -18,9 +19,9 @@ namespace RoadRunnerServer.Services
         }
 
 
-        public IEnumerable<Product> GetCustomerOrder()
+        public IEnumerable<ItemLine> GetCustomerOrder()
         {
-            return _db.GetAll();
+            return _db.GetAll().OrderBy(o => o.Id);
         }
 
         public async Task<bool> AppendLineAsync(LineTypeEnum lineType, int productId)
@@ -40,6 +41,11 @@ namespace RoadRunnerServer.Services
             {
                 _db.Remove(i);
             }            
+        }
+
+        public long GetLastUpdateTime()
+        {
+            return _sellingPipeline.LastUpdated.Ticks;
         }
     }
 

@@ -37,6 +37,7 @@ namespace RoadRunnerServer.Services
             }
             catch (Exception ex)
             {
+                Trace.Write($"Error reading '{key}' from DB type '{GetType().Name}'\n => {ex.ToString()}");
                 //_logger.Log(LogLevel.Error, ex.Message);
                 throw;
             }
@@ -51,9 +52,17 @@ namespace RoadRunnerServer.Services
             }
             catch (Exception ex)
             {
-                Trace.Write($"Error saving '{key}' => {value} to '{GetType().Name}'");
+                Trace.Write($"Error saving '{key}' => {value} to '{GetType().Name}'\n => {ex.ToString()}");
                 //_logger.Log(LogLevel.Error, ex.Message);
             }
+        }
+
+        public int Append(T orderLine)
+        {
+            var autoKey = GetAllKeys().Count() + 1;
+            Write(autoKey, orderLine);
+
+            return autoKey;
         }
 
         public T Remove(object key)
@@ -70,7 +79,7 @@ namespace RoadRunnerServer.Services
             }
             catch (Exception ex)
             {
-                Trace.Write($"Error removing '{key}' => {key} to '{GetType().Name}'");
+                Trace.Write($"Error removing '{key}' => {key} to '{GetType().Name}'\n => {ex.ToString()}");
                 //_logger.Log(LogLevel.Error, ex.Message);
                 throw;
             }

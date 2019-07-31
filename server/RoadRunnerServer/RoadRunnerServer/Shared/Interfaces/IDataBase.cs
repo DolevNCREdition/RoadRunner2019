@@ -7,6 +7,8 @@ namespace RoadRunnerServer.Shared.Interfaces
     {
         T Read(object key);
         void Write(object key, T value);
+        int Append(T orderLine);
+
         T Remove(object key);
 
         IEnumerable<T> GetAll();

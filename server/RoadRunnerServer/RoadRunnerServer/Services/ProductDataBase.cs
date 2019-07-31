@@ -14,22 +14,21 @@ namespace RoadRunnerServer.Services
 
         private void Init()
         {
-            int i = 0;
-            Write(++i, new Product { Id = i, Name = "Hamburger Patty", Price = new Price { Symbol = '$', Value = 3.59 } });
-            Write(++i, new Product { Id = i, Name = "Lettuce", Price = new Price { Symbol = '$', Value = 1.25 } });
-            Write(++i, new Product { Id = i, Name = "Carrot", Price = new Price { Symbol = '$', Value = 2.24 } });
-            Write(++i, new Product { Id = i, Name = "Ketchup", Price = new Price { Symbol = '$', Value = 4.20 } });
-            Write(++i, new Product { Id = i, Name = "Hamburger Bun", Price = new Price { Symbol = '$', Value = 1.50 } });
-            Write(++i, new Product { Id = i, Name = "Hot Dog", Price = new Price { Symbol = '$', Value = 2.89 } });
-            Write(++i, new Product { Id = i, Name = "Thousand isles sauce", Price = new Price { Symbol = '$', Value = 4.76 } });
-            Write(++i, new Product { Id = i, Name = "Fresh fish", Price = new Price { Symbol = '$', Value = 10.32 } });
-            Write(++i, new Product { Id = i, Name = "Feta Cheese", Price = new Price { Symbol = '$', Value = 3.27 } });
-            Write(++i, new Product { Id = i, Name = "Watermelon", Price = new Price { Symbol = '$', Value = 3.12 } });
-            Write(++i, new Product { Id = i, Name = "Snickers Bar", Price = new Price { Symbol = '$', Value = 0.90 } });
-            Write(++i, new Product { Id = i, Name = "Espresso", Price = new Price { Symbol = '$', Value = 1.25 } });
-            Write(++i, new Product { Id = i, Name = "Cucumber", Price = new Price { Symbol = '$', Value = 1.50 } });
-            Write(++i, new Product { Id = i, Name = "Pickles", Price = new Price { Symbol = '$', Value = 2.00 } });
-            Write(++i, new Product { Id = i, Name = "Pasta", Price = new Price { Symbol = '$', Value = 3.17 } });
+            Append(new Product { Name = "Hamburger Patty", Price = new Price { Symbol = '$', Value = 3.59 } });
+            Append(new Product { Name = "Lettuce", Price = new Price { Symbol = '$', Value = 1.25 } });
+            Append(new Product { Name = "Carrot", Price = new Price { Symbol = '$', Value = 2.24 } });
+            Append(new Product { Name = "Ketchup", Price = new Price { Symbol = '$', Value = 4.20 } });
+            Append(new Product { Name = "Hamburger Bun", Price = new Price { Symbol = '$', Value = 1.50 } });
+            Append(new Product { Name = "Hot Dog", Price = new Price { Symbol = '$', Value = 2.89 } });
+            Append(new Product { Name = "Thousand isles sauce", Price = new Price { Symbol = '$', Value = 4.76 } });
+            Append(new Product { Name = "Fresh fish", Price = new Price { Symbol = '$', Value = 10.32 } });
+            Append(new Product { Name = "Feta Cheese", Price = new Price { Symbol = '$', Value = 3.27 } });
+            Append(new Product { Name = "Watermelon", Price = new Price { Symbol = '$', Value = 3.12 } });
+            Append(new Product { Name = "Snickers Bar", Price = new Price { Symbol = '$', Value = 0.90 } });
+            Append(new Product { Name = "Espresso", Price = new Price { Symbol = '$', Value = 1.25 } });
+            Append(new Product { Name = "Cucumber", Price = new Price { Symbol = '$', Value = 1.50 } });
+            Append(new Product { Name = "Pickles", Price = new Price { Symbol = '$', Value = 2.00 } });
+            Append(new Product { Name = "Pasta", Price = new Price { Symbol = '$', Value = 3.17 } });
         }
     }
 }

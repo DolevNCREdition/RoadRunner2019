@@ -12,7 +12,7 @@ namespace RoadRunnerServer.Controller
     [ApiController]
     public class ScannerController : ControllerBase
     {
-        private ILineService _lineService;
+        private readonly ILineService _lineService;
 
         public ScannerController(ILineService lineService)
         {

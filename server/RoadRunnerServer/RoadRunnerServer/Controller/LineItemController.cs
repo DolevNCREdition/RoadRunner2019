@@ -13,7 +13,7 @@ namespace RoadRunnerServer.Controller
     [ApiController]
     public class LineItemController : ControllerBase
     {
-        private ILineService _lineService;
+        private readonly ILineService _lineService;
 
         public LineItemController(ILineService lineService)
         {

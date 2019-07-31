@@ -12,7 +12,7 @@ namespace RoadRunnerServer.Controller
     [ApiController]
     public class PLUController : ControllerBase
     {
-        private ILineService _lineService;
+        private readonly ILineService _lineService;
 
         public PLUController(ILineService lineService)
         {

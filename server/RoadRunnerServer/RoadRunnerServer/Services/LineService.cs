@@ -33,15 +33,13 @@ namespace RoadRunnerServer.Services
                 return false;
             }
             var orderLine = new ItemLine { Id = product.Id, Name = product.Name, Price = product.Price };
-            var currentLines = _db.GetAll().Count();
-            _db.Write(currentLines + 1 , orderLine);
             return true;
         }
 
         public void CloseTransaction()
         {
-            var allItems = _db.GetAll();
-            for (int i = 0; i < allItems.Count(); i++)
+            var allItems = _db.GetAll().ToList();
+            for (int i = 0; i < allItems.Count; i++)
             {
                 _db.Remove(i);
             }            

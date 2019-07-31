@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using RoadRunnerServer.Models;
-using RoadRunnerServer.Shared.Interfaces;
-using Product = RoadRunnerServer.Shared.Models.Product;
+using RoadRunnerServer.Shared;
+using Product = RoadRunnerServer.Shared.Product;
 
 namespace RoadRunnerServer.Services
 {

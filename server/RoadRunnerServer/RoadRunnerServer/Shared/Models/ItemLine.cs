@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RoadRunnerServer.Shared.Models
+namespace RoadRunnerServer.Shared
 {
     public class ItemLine : Product
     {

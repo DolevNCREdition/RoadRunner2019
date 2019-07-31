@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RoadRunnerServer.Services;
+using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Controller
 {
@@ -22,7 +23,7 @@ namespace RoadRunnerServer.Controller
         [HttpPost]
         public bool AddProductById(int id)
         {
-            return _lineService.AddLineItem(id);
+            return _lineService.AppendLine(id);
         }
     }
 }

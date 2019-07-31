@@ -1,7 +1,7 @@
 ﻿
-using RoadRunnerServer.Shared.Models;
+using RoadRunnerServer.Shared;
 
-namespace RoadRunnerServer.Shared.Interfaces
+namespace RoadRunnerServer.Shared
 {
     public interface IProductDataBase : IDataBase<Product>
     {

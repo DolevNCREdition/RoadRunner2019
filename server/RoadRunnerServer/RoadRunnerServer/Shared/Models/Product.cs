@@ -1,7 +1,7 @@
 ﻿
 using RoadRunnerServer.Models;
 
-namespace RoadRunnerServer.Shared.Models
+namespace RoadRunnerServer.Shared
 {
     public class Product
     {

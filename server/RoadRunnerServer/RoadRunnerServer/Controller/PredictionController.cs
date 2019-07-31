@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RoadRunnerServer.Shared.Models;
+using RoadRunnerServer.Shared;
 using RoadRunnerServer.Services;
 
 namespace RoadRunnerServer.Controller

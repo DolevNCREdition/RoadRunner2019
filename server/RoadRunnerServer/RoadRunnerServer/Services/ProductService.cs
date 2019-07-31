@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using RoadRunnerServer.Shared.Models;
-using RoadRunnerServer.Shared.Interfaces;
+using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Services
 {

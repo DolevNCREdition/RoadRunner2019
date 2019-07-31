@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using RoadRunnerServer.Shared.Interfaces;
-using RoadRunnerServer.Shared.Models;
+using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Controller
 {

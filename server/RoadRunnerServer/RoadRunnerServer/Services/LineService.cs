@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using RoadRunnerServer.Shared.Interfaces;
-using RoadRunnerServer.Shared.Models;
+using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Services
 {
@@ -11,7 +8,7 @@ namespace RoadRunnerServer.Services
     {
         private readonly ICustomerOrderDataBase _db;
 
-        private IProductService _productService;
+        private readonly IProductService _productService;
 
         public LineService(IProductService productService, ICustomerOrderDataBase db)
         {
@@ -25,7 +22,7 @@ namespace RoadRunnerServer.Services
             return _db.GetAll();
         }
 
-        public bool AddLineItem(int productId)
+        public bool AppendLine(int productId)
         {
             var product = _productService.GetProduct(productId);
             if (product == null)

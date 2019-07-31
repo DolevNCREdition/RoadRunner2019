@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using RoadRunnerServer.Shared.Models;
+using RoadRunnerServer.Shared;
 
-namespace RoadRunnerServer.Shared.Interfaces
+namespace RoadRunnerServer.Shared
 {
     public interface IProductService
     {

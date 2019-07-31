@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace RoadRunnerServer.Shared.Interfaces
+namespace RoadRunnerServer.Shared
 {
     public interface IDataBase<T>
     {

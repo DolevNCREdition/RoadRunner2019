@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using RoadRunnerServer.Services;
-using RoadRunnerServer.Shared.Interfaces;
+using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer
 {

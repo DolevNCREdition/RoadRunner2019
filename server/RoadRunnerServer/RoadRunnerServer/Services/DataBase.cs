@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.Caching.Memory;
 
-using RoadRunnerServer.Shared.Interfaces;
+using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Services
 {

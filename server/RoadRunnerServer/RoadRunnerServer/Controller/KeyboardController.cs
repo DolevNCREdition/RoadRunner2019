@@ -18,7 +18,7 @@ namespace RoadRunnerServer.Controller
         [HttpPost]
         public async Task<bool> AddProductById(int id)
         {
-            return await _lineService.AppendLineAsync(id);
+            return await _lineService.AppendLineAsync(LineTypeEnum.Product, id);
         }
     }
 }

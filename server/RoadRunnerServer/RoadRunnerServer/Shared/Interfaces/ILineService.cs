@@ -8,7 +8,7 @@ namespace RoadRunnerServer.Shared
         IEnumerable<Product> GetCustomerOrder();
 
         //bool AppendLine(int productId);
-        Task<bool> AppendLineAsync(int productId);
+        Task<bool> AppendLineAsync(LineTypeEnum lineType, int productId);
 
         void CloseTransaction();
     }

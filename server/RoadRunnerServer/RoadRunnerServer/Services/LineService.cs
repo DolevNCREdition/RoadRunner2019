@@ -10,11 +10,9 @@ namespace RoadRunnerServer.Services
     {
         private readonly ICustomerOrderDataBase _db;
         private readonly ISellingPipeline _sellingPipeline;
-        private readonly IProductService _productService;
 
-        public LineService(IProductService productService, ICustomerOrderDataBase db, ISellingPipeline sellingPipeline)
+        public LineService(ICustomerOrderDataBase db, ISellingPipeline sellingPipeline)
         {
-            _productService = productService;
             _sellingPipeline = sellingPipeline;
             _db = db;
         }
@@ -25,16 +23,14 @@ namespace RoadRunnerServer.Services
             return _db.GetAll();
         }
 
-        public async Task<bool> AppendLineAsync(int productId)
+        public async Task<bool> AppendLineAsync(LineTypeEnum lineType, int productId)
         {
-            var product = _productService.GetProduct(productId);
-            if (product == null)
+            var pipelineItem = new PipelineItem
             {
-                return await Task.FromResult(false) ;
-            }
-
-            var orderLine = new ItemLine { Id = product.Id, Name = product.Name, Price = product.Price };
-            return  await _sellingPipeline.ProcessLine.SendAsync(orderLine);
+                ItemId = productId,
+                ItemType = lineType,
+            };
+            return  await _sellingPipeline.ProcessLine.SendAsync(pipelineItem);
         }
 
         public void CloseTransaction()

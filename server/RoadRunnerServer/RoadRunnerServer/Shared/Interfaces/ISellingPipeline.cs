@@ -6,6 +6,6 @@ namespace RoadRunnerServer.Shared
 {
     public interface ISellingPipeline
     {
-        ITargetBlock<ItemLine> ProcessLine { get; }
+        ITargetBlock<PipelineItem> ProcessLine { get; }
     }
 }

@@ -1,34 +1,38 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Extensions.Caching.Memory;
-using RoadRunnerServer.Shared;
+
 using RoadRunnerServer.Shared.Interfaces;
 
 namespace RoadRunnerServer.Services
 {
     public class DataBase<T> : IDataBase<T>
     {
-        //private readonly IMemoryCache _cache;
-        private static readonly IDictionary<object, object> _cache = new Dictionary<object, object>();
+        private readonly IMemoryCache _cache;
 
-
-
+        private readonly string _prefix; 
+        //private static readonly IDictionary<object, object> _cache = new Dictionary<object, object>();
         //private readonly ILogger _logger;
-        //private string _connectionString;
 
-        //public DataBase(IMemoryCache cache /*, ILogger logger/*, IConfiguration config*/)
-        //{
-        //    _cache = cache;
-        //    //_logger = logger;
-        //}
+        public DataBase(IMemoryCache cache /*, ILogger logger/*, IConfiguration config*/)
+        {
+            _cache = cache;
+            _prefix = typeof(T).Name;
+            //_logger = logger;
+        }
         public T Read(object key)
         {
             try
             {
-                if(_cache.ContainsKey(key))
-                    return (T)_cache[key];
+                if (_cache.TryGetValue($"{_prefix}:{key}", out var obj))
+                    return (T) obj;
+
+                //if(_cache.ContainsKey(key))
+                //    return (T)_cache[key];
                 return default(T);
             }
             catch (Exception ex)
@@ -42,7 +46,8 @@ namespace RoadRunnerServer.Services
         {
             try
             {
-                _cache[key]  = value;
+                //_cache[key]  = value;
+                _cache.Set($"{_prefix}:{key}", value);
             }
             catch (Exception ex)
             {
@@ -55,11 +60,13 @@ namespace RoadRunnerServer.Services
         {
             try
             {
-                var value = Read(key);
-                if (value != null)
-                    _cache.Remove(key);
-
-                return (T)value;
+                _cache.TryGetValue($"{_prefix}:{key}", out var value);
+                _cache.Remove(key);
+                //var value = Read(key);
+                //if (value != null)
+                //    _cache.Remove(key);
+                //
+                return (T) value;
             }
             catch (Exception ex)
             {
@@ -71,7 +78,26 @@ namespace RoadRunnerServer.Services
 
         public IEnumerable<T> GetAll()
         {
-            return _cache.Values.OfType<T>();
+            //return _cache.Values.OfType<T>();
+            return GetAllKeys().Select(Read);
+        }
+
+        private IEnumerable<string> GetAllKeys()
+        {
+            var field = typeof(MemoryCache).GetProperty("EntriesCollection", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            if (!(field.GetValue(_cache) is ICollection collection))
+                yield break;
+
+            var prefix = $"{_prefix}:";
+
+            foreach (var item in collection)
+            {
+                var methodInfo = item.GetType().GetProperty("Key");
+                var key = methodInfo.GetValue(item).ToString();
+                if(key.StartsWith(prefix))
+                    yield return key.Substring(prefix.Length);
+            }
         }
     }
 

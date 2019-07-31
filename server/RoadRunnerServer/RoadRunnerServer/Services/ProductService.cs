@@ -1,6 +1,6 @@
-﻿using RoadRunnerServer.Shared.Models;
-
-using RoadRunnerServer.Services.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using RoadRunnerServer.Shared.Models;
 using RoadRunnerServer.Shared.Interfaces;
 
 namespace RoadRunnerServer.Services
@@ -16,6 +16,11 @@ namespace RoadRunnerServer.Services
         public Product GetProduct(int id)
         {
             return _db.Read(id);
+        }
+
+        public IList<Product> GetAllProducts()
+        {
+            return _db.GetAll().OrderBy( p=> p.Id).ToList();
         }
     }
 }

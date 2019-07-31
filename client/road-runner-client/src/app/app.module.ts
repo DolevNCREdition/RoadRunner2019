@@ -4,16 +4,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ScannerComponent } from './components/scanner/scanner.component';
+import { FormsModule } from '@angular/forms';
+import { OrderLineComponent } from './components/order-line/order-line.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ScannerComponent,
+    OrderLineComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,6 +30,7 @@ namespace RoadRunnerServer.Services
                 return false;
             }
             var orderLine = new ItemLine { Id = product.Id, Name = product.Name, Price = product.Price };
+            _db.Append(orderLine);
             return true;
         }
 

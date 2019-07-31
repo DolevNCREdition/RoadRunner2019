@@ -20,7 +20,7 @@ namespace RoadRunnerServer.Controller
             _lineService = lineService;
         }
 
-        [HttpPost]
+        [HttpPost("{id}")]
         public bool AddProductById(int id)
         {
             return _lineService.AppendLine(id);

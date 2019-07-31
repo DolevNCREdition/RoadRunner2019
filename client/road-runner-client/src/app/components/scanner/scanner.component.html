@@ -1,0 +1,9 @@
+<div>
+  <label>
+    Scan code here:
+  </label>
+  <input type="text" [(ngModel)]="code"/>  
+</div>
+<button (click)="scanProduct()">Scan</button>
+
+<app-order-line [lineItems]="lineItems"></app-order-line>

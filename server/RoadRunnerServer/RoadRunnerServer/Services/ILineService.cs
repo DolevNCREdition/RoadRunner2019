@@ -1,4 +1,4 @@
-﻿using RoadRunnerServer.Models;
+﻿using RoadRunnerServer.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace RoadRunnerServer.Services
 {
     public interface ILineService
     {
-        List<Product> LineItems { get; }
+        IEnumerable<Product> GetCustomerOrder();
 
         bool AddLineItem(int productId);
 

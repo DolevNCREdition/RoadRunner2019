@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RoadRunnerServer.Models;
 using RoadRunnerServer.Services;
+using RoadRunnerServer.Shared.Models;
 
 namespace RoadRunnerServer.Controller
 {
@@ -21,9 +21,9 @@ namespace RoadRunnerServer.Controller
         }
 
         [HttpGet]
-        public List<Product> GetLineItems()
+        public IEnumerable<Product> GetLineItems()
         {
-            return _lineService.LineItems;
+            return _lineService.GetCustomerOrder();
         }
     }
 }

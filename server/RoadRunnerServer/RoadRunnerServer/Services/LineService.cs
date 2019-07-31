@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RoadRunnerServer.Models;
+using RoadRunnerServer.Services.Interfaces;
+using RoadRunnerServer.Shared.Interfaces;
+using RoadRunnerServer.Shared.Models;
 
 namespace RoadRunnerServer.Services
 {
     public class LineService : ILineService
     {
+        private readonly ICustomerOrderDataBase _db;
+
         private IProductService _productService;
 
-        public LineService(IProductService productService)
+        public LineService(IProductService productService, ICustomerOrderDataBase db)
         {
             _productService = productService;
+            _db = db;
         }
 
-        private List<Product> _lineItems = new List<Product>();
 
-        public List<Product> LineItems { get => _lineItems; }
+        public IEnumerable<Product> GetCustomerOrder()
+        {
+            return _db.GetAll();
+        }
 
         public bool AddLineItem(int productId)
         {
@@ -26,13 +33,19 @@ namespace RoadRunnerServer.Services
             {
                 return false;
             }
-            _lineItems.Add(product);
+            var orderLine = new ItemLine { Id = product.Id, Name = product.Name, Price = product.Price };
+            var currentLines = _db.GetAll().Count();
+            _db.Write(currentLines + 1 , orderLine);
             return true;
         }
 
         public void CloseTransaction()
         {
-            _lineItems.Clear();
+            var allItems = _db.GetAll();
+            for (int i = 0; i < allItems.Count(); i++)
+            {
+                _db.Remove(i);
+            }            
         }
     }
 }

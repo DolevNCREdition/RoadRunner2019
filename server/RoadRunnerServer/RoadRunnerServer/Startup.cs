@@ -31,6 +31,8 @@ namespace RoadRunnerServer
             services.AddSingleton<ICustomerOrderDataBase, CustomerOrderDatabase>();
             services.AddSingleton<IProductService, ProductService>();
             services.AddSingleton<ILineService, LineService>();
+            services.AddSingleton<ISellingPipeline, SellingPipeline>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

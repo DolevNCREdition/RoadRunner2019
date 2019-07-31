@@ -3,7 +3,7 @@ using RoadRunnerServer.Models;
 
 namespace RoadRunnerServer.Shared
 {
-    public class Product
+    public class Product : IDbObject
     {
         public int Id { get; set; }
         public string Name { get; set; }

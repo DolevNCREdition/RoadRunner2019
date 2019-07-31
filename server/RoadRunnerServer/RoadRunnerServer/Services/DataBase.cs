@@ -10,7 +10,7 @@ using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Services
 {
-    public class DataBase<T> : IDataBase<T>
+    public class DataBase<T> : IDataBase<T> where T : IDbObject
     {
         private readonly IMemoryCache _cache;
 
@@ -57,10 +57,10 @@ namespace RoadRunnerServer.Services
             }
         }
 
-        public int Append(T orderLine)
+        public int Append(T value)
         {
-            var autoKey = GetAllKeys().Count() + 1;
-            Write(autoKey, orderLine);
+            var autoKey = GetAll().Max(o => o.Id) + 1;
+            Write(autoKey, value);
 
             return autoKey;
         }

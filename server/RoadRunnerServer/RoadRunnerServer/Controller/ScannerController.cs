@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using RoadRunnerServer.Services;
 using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Controller
@@ -21,9 +16,9 @@ namespace RoadRunnerServer.Controller
         }
 
         [HttpPost("{id}")]
-        public bool AddProductById(int id)
+        public async Task<bool> AddProductById(int id)
         {
-            return _lineService.AppendLine(id);
+            return await _lineService.AppendLineAsync(id);
         }
     }
 }

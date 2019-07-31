@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using RoadRunnerServer.Shared;
 
 namespace RoadRunnerServer.Services
@@ -7,12 +9,13 @@ namespace RoadRunnerServer.Services
     public class LineService : ILineService
     {
         private readonly ICustomerOrderDataBase _db;
-
+        private readonly ISellingPipeline _sellingPipeline;
         private readonly IProductService _productService;
 
-        public LineService(IProductService productService, ICustomerOrderDataBase db)
+        public LineService(IProductService productService, ICustomerOrderDataBase db, ISellingPipeline sellingPipeline)
         {
             _productService = productService;
+            _sellingPipeline = sellingPipeline;
             _db = db;
         }
 
@@ -22,16 +25,16 @@ namespace RoadRunnerServer.Services
             return _db.GetAll();
         }
 
-        public bool AppendLine(int productId)
+        public async Task<bool> AppendLineAsync(int productId)
         {
             var product = _productService.GetProduct(productId);
             if (product == null)
             {
-                return false;
+                return await Task.FromResult(false) ;
             }
+
             var orderLine = new ItemLine { Id = product.Id, Name = product.Name, Price = product.Price };
-            _db.Append(orderLine);
-            return true;
+            return  await _sellingPipeline.ProcessLine.SendAsync(orderLine);
         }
 
         public void CloseTransaction()
@@ -43,4 +46,6 @@ namespace RoadRunnerServer.Services
             }            
         }
     }
+
+    
 }

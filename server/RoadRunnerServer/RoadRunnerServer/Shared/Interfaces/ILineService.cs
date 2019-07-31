@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RoadRunnerServer.Shared
 {
@@ -6,7 +7,8 @@ namespace RoadRunnerServer.Shared
     {
         IEnumerable<Product> GetCustomerOrder();
 
-        bool AppendLine(int productId);
+        //bool AppendLine(int productId);
+        Task<bool> AppendLineAsync(int productId);
 
         void CloseTransaction();
     }
